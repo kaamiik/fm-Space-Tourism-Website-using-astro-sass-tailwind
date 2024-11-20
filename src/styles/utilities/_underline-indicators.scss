@@ -1,0 +1,15 @@
+@use "../abstracts/" as *;
+
+.underline-indicators > * {
+  border-bottom: 3px solid hsla(0, 0%, 100%, 0);
+}
+
+.underline-indicators > *:is(:hover, :focus) {
+  border-bottom: 3px solid hsla(0, 0%, 100%, 0.5);
+}
+
+.underline-indicators > .active,
+.underline-indicators > [aria-selected="true"] {
+  color: $color-neutral-100;
+  border-bottom: 3px solid $color-neutral-100;
+}
