@@ -2,31 +2,59 @@
 
 ---
 
-<nav aria-label="primary navigation">
-  <ul class="nav | flex-group">
-    <li><a href="/index.html">Home</a></li>
-    <li><a href="#">Page 2</a></li>
-    <li><a href="#">Page 3</a></li>
-    <li><a href="#">Page 4</a></li>
+<!-- <nav class="nav" aria-label="primary navigation">
+  <ul class="nav__items | flex-group underline-indicators">
+    <li class="nav__item | active">
+      <a class="nav__link" href="/index.html"
+        ><span class="nav__number">00</span>Home</a
+      >
+    </li>
+    <li class="nav__item">
+      <a class="nav__link" href="#"
+        ><span class="nav__number">01</span>Destination</a
+      >
+    </li>
+    <li class="nav__item">
+      <a class="nav__link" href="#"><span class="nav__number">02</span>Crew</a>
+    </li>
+    <li class="nav__item">
+      <a class="nav__link" href="#"
+        ><span class="nav__number">03</span>Technology</a
+      >
+    </li>
   </ul>
-</nav>
-
+</nav> -->
 <style lang="scss">
   @use "../styles/abstracts" as *;
   .nav {
-    --flex-column-gap: #{$navigation-gap};
+    &__items {
+      --flex-column-gap: #{$navigation-gap};
 
-    list-style: none;
-    font-family: $navigation-font-family;
-    font-weight: $navigation-font-weight;
+      list-style: none;
+      font-family: $navigation-font-family;
+      font-weight: $navigation-font-weight;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing-1;
+    }
 
-    a {
+    &__item {
+      padding: 2em 0;
+    }
+
+    &__link {
+      display: flex;
+      gap: $size-3;
+      align-items: center;
       color: $navigation-color;
       text-decoration: $navigation-link-text-decoration;
 
       &:is(:hover, :focus) {
         color: $navigation-color-hover;
       }
+    }
+
+    &__number {
+      font-weight: 700;
     }
   }
 </style>

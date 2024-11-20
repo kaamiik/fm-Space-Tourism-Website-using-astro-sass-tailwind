@@ -1,0 +1,43 @@
+---
+
+---
+
+<div class="tab-list dot-indicators flex gap-200 lg:gap-500" role="tablist">
+  <button class="tab" type="button" role="tab" aria-selected="true"
+    ><span class="sr-only">SLIDE TITLE</span></button
+  >
+  <button class="tab" type="button" role="tab" aria-selected="false"
+    ><span class="sr-only">SLIDE TITLE</span></button
+  >
+  <button class="tab" type="button" role="tab" aria-selected="false"
+    ><span class="sr-only">SLIDE TITLE</span></button
+  >
+  <button class="tab" type="button" role="tab" aria-selected="false"
+    ><span class="sr-only">SLIDE TITLE</span></button
+  >
+</div>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  .dot-indicators > * {
+    border-radius: 100vh;
+    width: 10px;
+    height: 10px;
+    background-color: $color-neutral-100;
+    opacity: 25%;
+
+    @include mq(large) {
+      width: 15px;
+      height: 15px;
+    }
+
+    &:is(:hover, :focus) {
+      opacity: 50%;
+    }
+  }
+
+  .dot-indicators > [aria-selected="true"] {
+    opacity: 1;
+  }
+</style>
