@@ -1,29 +1,33 @@
 ---
-import SiteFooter from "../components/SiteFooter.astro";
-import SiteHeader from "../components/SiteHeader.astro";
 import Layout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import NumberedTitle from "../components/NumberedTitle.astro";
+import LargeButton from "../components/LargeButton.astro";
+import Tabs from "../components/Tabs.astro";
+import DotTabs from "../components/DotTabs.astro";
+import NumberTabs from "../components/NumberTabs.astro";
 ---
 
-<Layout title="Let's get to work">
-  <div class="container flow">
-    <h1 class="heading-1">Let's go</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum nulla
-      repellendus dolore quam quas? Nisi eaque veniam dolorem enim. Odit
-      incidunt nisi dignissimos facilis perspiciatis quidem accusantium at
-      consectetur minus.
-    </p>
-    <p>
-      Aperiam non nulla recusandae totam atque officia debitis tenetur, natus
-      veritatis eius perferendis libero earum voluptatum doloremque dignissimos,
-      ut laborum illum eligendi autem ipsa quaerat. Dolorum consequatur ipsum
-      harum ut.
-    </p>
-    <p>
-      Dolore molestias et esse neque beatae atque. Quas necessitatibus,
-      quibusdam est vero neque corporis doloremque consectetur error, dicta
-      animi commodi! Accusamus distinctio dolor eligendi sint repudiandae
-      sapiente adipisci nemo doloribus?
-    </p>
+<Layout title="Space Tourism Website" bodyClass="home">
+  <div class="grid-container" data-type="home">
+    <div>
+      <h1 class="font-serif fs-500 tracking-3 uppercase text-neutral-300">
+        So, you want to travel to
+        <span class="heading-1 block">Space</span>
+      </h1>
+      <p>
+        Let’s face it; if you want to go to space, you might as well genuinely
+        go to outer space and not hover kind of on the edge of it. Well sit
+        back, and relax because we’ll give you a truly out of this world
+        experience!
+      </p>
+    </div>
+    <div>
+      <LargeButton />
+    </div>
   </div>
 </Layout>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+</style>
