@@ -13,19 +13,8 @@ body {
 
   background-size: cover;
   background-position: bottom center;
-}
 
-.home {
-  background-image: url("/public/assets/images/home/background-home-mobile.jpg");
-
-  @include mq(medium) {
-    background-position: center center;
-    background-image: url("/public/assets/images/home/background-home-tablet.jpg");
-  }
-
-  @include mq(large) {
-    background-image: url("/public/assets/images/home/background-home-desktop.jpg");
-  }
+  overflow-x: hidden;
 }
 
 main {
