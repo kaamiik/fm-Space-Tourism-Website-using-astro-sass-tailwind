@@ -1,0 +1,126 @@
+---
+import Layout from "../layouts/BaseLayout.astro";
+import NumberedTitle from "../components/NumberedTitle.astro";
+import Tabs from "../components/Tabs.astro";
+
+const destinations = [
+  {
+    number: "1",
+    name: "Moon",
+    webp: "/assets/images/destination/image-moon.webp",
+    png: "/assets/images/destination/image-moon.png",
+    alt: "A detailed view of the Moon showing its surface features with a shadow covering nearly half of it.",
+    description: `See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.`,
+    distance: "384,400 km",
+    travelTime: "3 days",
+    hidden: false,
+  },
+  {
+    number: "2",
+    name: "Mars",
+    webp: "/assets/images/destination/image-mars.webp",
+    png: "/assets/images/destination/image-mars.png",
+    alt: "A detailed view of Mars with its distinct brown and red surface.",
+    description: `Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest!`,
+    distance: "225 mil. km",
+    travelTime: "9 months",
+    hidden: true,
+  },
+  {
+    number: "3",
+    name: "Europa",
+    webp: "/assets/images/destination/image-europa.webp",
+    png: "/assets/images/destination/image-europa.png",
+    alt: "A view of Europa, one of Jupiter's moons, with a smooth, icy surface marked by dark lines and cracks.",
+    description: `The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or simple relaxation in your snug wintery cabin.`,
+    distance: "628 mil. km",
+    travelTime: "3 years",
+    hidden: true,
+  },
+  {
+    number: "4",
+    name: "Titan",
+    webp: "/assets/images/destination/image-titan.webp",
+    png: "/assets/images/destination/image-titan.png",
+    alt: "A view of Titan with its thick, hazy atmosphere and contrasting light and dark areas representing shadows and illumination.",
+    description: `The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of Saturn.`,
+    distance: "1.6 bil. km",
+    travelTime: "7 years",
+    hidden: true,
+  },
+];
+---
+
+<Layout title="Space Tourism Website" bodyClass="destination">
+  <div class="grid-container" data-type="destination">
+    <NumberedTitle number="01" title="Pick Your Destination" />
+
+    <Tabs />
+
+    {
+      destinations.map((destination) => (
+        <>
+          <picture
+            id={`${destination.name.toLowerCase()}-image`}
+            class={destination.hidden ? "hidden" : ""}
+            tabindex="0"
+          >
+            <source srcset={destination.webp} type="image/webp" />
+            <img src={destination.png} alt={destination.alt} />
+          </picture>
+
+          <article
+            id={`tabpanel-${destination.number}`}
+            class={`destination-info ${destination.hidden ? "hidden" : "flex"} flex-col gap-300 lg:gap-500`}
+            role="tabpanel"
+            aria-labelledby={`tab-${destination.number}`}
+            tabindex="0"
+          >
+            <div class="flex flex-col gap-200">
+              <h2 class="heading-2">{destination.name}</h2>
+              <p>{destination.description}</p>
+            </div>
+            <hr class="text-neutral-100/0.25 w-full" />
+            <div class="flex flex-col gap-300 md:flex-row md:justify-evenly lg:justify-start lg:gap-1600">
+              <div class="flex flex-col gap-150">
+                <h3 class="fs-200 tracking-1 uppercase font-accent">
+                  AVG. DISTANCE
+                </h3>
+                <p class="text-neutral-100 text-6 uppercase font-serif">
+                  {destination.distance}
+                </p>
+              </div>
+              <div class="flex flex-col gap-150">
+                <h3 class="fs-200 tracking-1 uppercase font-accent">
+                  Est. travel time
+                </h3>
+                <p class="text-neutral-100 text-6 uppercase font-serif">
+                  {destination.travelTime}
+                </p>
+              </div>
+            </div>
+          </article>
+        </>
+      ))
+    }
+  </div>
+</Layout>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  .destination-info {
+    &:focus-visible {
+      outline: 5px double $color-neutral-300;
+      outline-offset: 8px;
+    }
+  }
+
+  picture {
+    &:focus-visible {
+      outline: 5px solid $color-neutral-300;
+      outline-offset: 8px;
+      border-radius: 100vh;
+    }
+  }
+</style>
