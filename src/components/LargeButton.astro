@@ -3,7 +3,7 @@
 ---
 
 <a
-  href="#"
+  href="/destination.html"
   class="large-button | relative font-serif text-neutral-900 bg-neutral-100 text-[1.125rem] md:text-[2rem] uppercase px-[2.15em] rounded-full aspect-square inline-grid place-items-center z-[1]"
   >Explore</a
 >
@@ -30,6 +30,11 @@
     &:focus::after {
       opacity: 15%;
       transform: scale(1.5);
+    }
+
+    &:focus-visible {
+      outline: 3px solid red;
+      outline-offset: 3px;
     }
   }
 </style>

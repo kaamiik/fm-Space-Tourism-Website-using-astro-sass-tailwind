@@ -3,15 +3,13 @@ import PrimaryNavigation from "./PrimaryNavigation.astro";
 ---
 
 <header class="site-header">
-  <div class="container">
-    <div class="site-header__inner">
-      <a href="/index.html">
-        <img src="/assets/images/shared/logo.svg" alt="" />
-        <p class="sr-only">SPACE TOURISM WEBSITE</p>
-      </a>
+  <div class="site-header__inner">
+    <a class="site-header__home" href="/index.html">
+      <img src="/assets/images/shared/logo.svg" alt="" />
+      <p class="sr-only">SPACE TOURISM WEBSITE</p>
+    </a>
 
-      <PrimaryNavigation underlineGap="2em" />
-    </div>
+    <PrimaryNavigation />
   </div>
 </header>
 
@@ -21,16 +19,53 @@ import PrimaryNavigation from "./PrimaryNavigation.astro";
   .site-header {
     color: $site-header-color;
     background-color: $site-header-background-color;
-    padding: $site-header-padding;
-
     &__inner {
       display: flex;
-      gap: $size-4;
-      align-items: $site-header-alignment;
+      align-items: center;
       justify-content: $site-header-jusitifcation-small-screens;
 
+      @include mq(large) {
+        &::after {
+          content: "";
+          position: relative;
+          display: block;
+          height: 1px;
+          width: 100%;
+          margin-top: $size-10;
+          margin-right: -2.5rem;
+          background: $color-neutral-100;
+          opacity: 25%;
+          order: 1;
+          z-index: 10;
+        }
+      }
+    }
+
+    &__home {
+      flex-shrink: 0;
+      & > img {
+        width: 40px;
+        height: 40px;
+        aspect-ratio: 1;
+        @include mq(medium) {
+          width: 48px;
+          height: 48px;
+        }
+      }
+
+      margin: $size-6;
       @include mq(medium) {
-        justify-content: $site-header-jusitifcation-large-screens;
+        margin: $size-6 $size-10;
+      }
+
+      @include mq(large) {
+        margin: $size-10 $size-16;
+        margin-bottom: 0;
+      }
+
+      &:focus-visible {
+        outline: 5px double $color-neutral-300;
+        outline-offset: 5px;
       }
     }
   }

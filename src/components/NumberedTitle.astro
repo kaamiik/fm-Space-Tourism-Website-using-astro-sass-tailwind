@@ -2,6 +2,9 @@
 const { number, title } = Astro.props;
 ---
 
-<h2 class="font-accent fs-500 uppercase tracking-3 flex items-center gap-300">
-  <span class="font-bold text-neutral-100/25">{number}</span>{title}
-</h2>
+<h1
+  class="numbered-title | font-accent fs-500 uppercase tracking-3 flex items-center gap-300 md:justify-self-start"
+>
+  <span class="font-bold text-neutral-100/25" aria-hidden="true">{number}</span
+  >{title}
+</h1>

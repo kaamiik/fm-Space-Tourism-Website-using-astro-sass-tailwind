@@ -1,20 +1,47 @@
 ---
-
+const crewTabs = [
+  {
+    id: 1,
+    label: "CREW COMMANDER",
+    image: "commander-image",
+    panelId: "tabpanel-1",
+  },
+  {
+    id: 2,
+    label: "CREW MISSION SPECIALIST",
+    image: "mission-specialist-image",
+    panelId: "tabpanel-2",
+  },
+  { id: 3, label: "CREW PILOT", image: "pilot-image", panelId: "tabpanel-3" },
+  {
+    id: 4,
+    label: "CREW FLIGHT ENGINEER",
+    image: "flight-engineer-image",
+    panelId: "tabpanel-4",
+  },
+];
 ---
 
-<div class="tab-list dot-indicators flex gap-200 lg:gap-500" role="tablist">
-  <button class="tab" type="button" role="tab" aria-selected="true"
-    ><span class="sr-only">SLIDE TITLE</span></button
-  >
-  <button class="tab" type="button" role="tab" aria-selected="false"
-    ><span class="sr-only">SLIDE TITLE</span></button
-  >
-  <button class="tab" type="button" role="tab" aria-selected="false"
-    ><span class="sr-only">SLIDE TITLE</span></button
-  >
-  <button class="tab" type="button" role="tab" aria-selected="false"
-    ><span class="sr-only">SLIDE TITLE</span></button
-  >
+<div
+  class="tab-list dot-indicators flex gap-200 lg:gap-500 py-800"
+  role="tablist"
+>
+  {
+    crewTabs.map(({ id, label, image, panelId }) => (
+      <button
+        id={`tab-${id}`}
+        class="tab"
+        type="button"
+        role="tab"
+        aria-selected={id === 1 ? "true" : "false"}
+        tabindex={id === 1 ? "0" : "-1"}
+        aria-controls={panelId}
+        data-image={image}
+      >
+        <span class="sr-only">{label}</span>
+      </button>
+    ))
+  }
 </div>
 
 <style lang="scss">
@@ -39,5 +66,12 @@
 
   .dot-indicators > [aria-selected="true"] {
     opacity: 1;
+  }
+
+  .tab {
+    &:focus-visible {
+      outline: 5px solid $color-neutral-100;
+      outline-offset: 5px;
+    }
   }
 </style>

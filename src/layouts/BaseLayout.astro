@@ -12,5 +12,62 @@ const { title, bodyClass } = Astro.props;
     <main>
       <slot />
     </main>
+    <script type="module" src="/public/js/main.js"></script>
   </body>
 </html>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+  // Adding Background Images to the Body
+  .home {
+    background-image: url("/assets/images/home/background-home-mobile.jpg");
+
+    @include mq(medium) {
+      background-position: top center;
+      background-image: url("/assets/images/home/background-home-tablet.jpg");
+    }
+
+    @include mq(large) {
+      background-image: url("/assets/images/home/background-home-desktop.jpg");
+    }
+  }
+
+  .destination {
+    background-image: url("/assets/images/destination/background-destination-mobile.jpg");
+
+    @include mq(medium) {
+      background-position: top center;
+      background-image: url("/assets/images/destination/background-destination-tablet.jpg");
+    }
+
+    @include mq(large) {
+      background-image: url("/assets/images/destination/background-destination-desktop.jpg");
+    }
+  }
+
+  .crew {
+    background-image: url("/assets/images/crew/background-crew-mobile.jpg");
+
+    @include mq(medium) {
+      background-position: top center;
+      background-image: url("/assets/images/crew/background-crew-tablet.jpg");
+    }
+
+    @include mq(large) {
+      background-image: url("/assets/images/crew/background-crew-desktop.jpg");
+    }
+  }
+
+  .technology {
+    background-image: url("/assets/images/technology/background-technology-mobile.jpg");
+
+    @include mq(medium) {
+      background-position: top center;
+      background-image: url("/assets/images/technology/background-technology-tablet.jpg");
+    }
+
+    @include mq(large) {
+      background-image: url("/assets/images/technology/background-technology-desktop.jpg");
+    }
+  }
+</style>

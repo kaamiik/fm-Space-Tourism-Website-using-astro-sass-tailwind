@@ -1,38 +1,43 @@
 ---
-
+const tabs = [
+  { id: 1, name: "Moon", image: "moon-image", panelId: "tabpanel-1" },
+  { id: 2, name: "Mars", image: "mars-image", panelId: "tabpanel-2" },
+  { id: 3, name: "Europa", image: "europa-image", panelId: "tabpanel-3" },
+  { id: 4, name: "Titan", image: "titan-image", panelId: "tabpanel-4" },
+];
 ---
 
-<div class="tab-list underline-indicators flex gap-400" role="tablist">
-  <button
-    class="tab | uppercase font-accent fs-300 text-neutral-300 tracking-1"
-    type="button"
-    role="tab"
-    aria-selected="true">Moon</button
-  >
-  <button
-    class="tab | uppercase font-accent fs-300 text-neutral-300 tracking-1"
-    type="button"
-    role="tab"
-    aria-selected="false">Mars</button
-  >
-  <button
-    class="tab | uppercase font-accent fs-300 text-neutral-300 tracking-1"
-    type="button"
-    role="tab"
-    aria-selected="false">Europa</button
-  >
-  <button
-    class="tab | uppercase font-accent fs-300 text-neutral-300 tracking-1"
-    type="button"
-    role="tab"
-    aria-selected="false">Titan</button
-  >
+<div
+  class="tab-list underline-indicators flex gap-400 lg:my-500"
+  role="tablist"
+>
+  {
+    tabs.map(({ id, name, image, panelId }) => (
+      <button
+        id={`tab-${id}`}
+        class="tab | uppercase font-accent fs-300 text-neutral-300 tracking-1"
+        type="button"
+        role="tab"
+        aria-selected={id === 1 ? "true" : "false"}
+        tabindex={id === 1 ? "0" : "-1"}
+        aria-controls={panelId}
+        data-image={image}
+      >
+        {name}
+      </button>
+    ))
+  }
 </div>
 
 <style lang="scss">
   @use "../styles/abstracts/" as *;
 
   .tab {
-    padding: 1em 0;
+    padding: 0.5em 0;
+
+    &:focus-visible {
+      outline: 5px solid $color-neutral-300;
+      outline-offset: 5px;
+    }
   }
 </style>

@@ -1,29 +1,47 @@
 ---
-
+const numberTabs = [
+  {
+    id: 1,
+    label: "LAUNCH VEHICLE TECHNOLOGY",
+    image: "launch-vehicle-image",
+    number: "1",
+  },
+  {
+    id: 2,
+    label: "SPACEPORT TECHNOLOGY",
+    image: "spaceport-image",
+    number: "2",
+  },
+  {
+    id: 3,
+    label: "SPACE CAPSULE TECHNOLOGY",
+    image: "space-capsule-image",
+    number: "3",
+  },
+];
 ---
 
 <div
-  class="tab-list | number-indicators flex gap-200 lg:flex-col lg:items-start lg:gap-400"
+  class="tab-list number-indicators flex gap-200 lg:flex-col lg:items-start lg:gap-400 lg:mr-400"
   role="tablist"
 >
-  <button
-    class="tab | font-serif fs-600 text-neutral-100"
-    type="button"
-    role="tab"
-    aria-selected="true"><span class="sr-only">SLIDE</span>1</button
-  >
-  <button
-    class="tab | font-serif fs-600 text-neutral-100"
-    type="button"
-    role="tab"
-    aria-selected="false"><span class="sr-only">SLIDE</span>2</button
-  >
-  <button
-    class="tab | font-serif fs-600 text-neutral-100"
-    type="button"
-    role="tab"
-    aria-selected="false"><span class="sr-only">SLIDE</span>3</button
-  >
+  {
+    numberTabs.map(({ id, label, number, image }) => (
+      <button
+        id={`tab-${id}`}
+        class="tab | font-serif fs-600 text-neutral-100"
+        type="button"
+        role="tab"
+        aria-selected={id === 1 ? "true" : "false"}
+        tabindex={id === 1 ? "0" : "-1"}
+        aria-controls={`tabpanel-${id}`}
+        data-image={image}
+      >
+        {number}
+        <span class="sr-only">{label}</span>
+      </button>
+    ))
+  }
 </div>
 
 <style lang="scss">
@@ -32,13 +50,18 @@
   .number-indicators > * {
     display: grid;
     place-content: center;
-    border-radius: 100vh;
+    border-radius: 50%;
     border: 1px solid hsla(0, 0%, 100%, 0.25);
-    padding: 1.25em 0;
+    padding: 1.25em;
     aspect-ratio: 1;
 
     &:is(:hover, :focus) {
       border: 1px solid $color-neutral-100;
+    }
+
+    &:focus-visible {
+      outline: 5px solid $color-neutral-300;
+      outline-offset: 5px;
     }
   }
 
