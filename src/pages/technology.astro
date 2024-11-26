@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/BaseLayout.astro";
+import NumberedTitle from "../components/NumberedTitle.astro";
+import NumberTabs from "../components/NumberTabs.astro";
+
+const technologyData = [
+  {
+    id: "launch-vehicle",
+    title: "Launch Vehicle",
+    description: `A launch vehicle or carrier rocket is a rocket-propelled vehicle used to
+      carry a payload from Earth's surface to space, usually to Earth orbit or
+      beyond. Our WEB-X carrier rocket is the most powerful in operation.
+      Standing 150 metres tall, it's quite an awe-inspiring sight on the
+      launch pad!`,
+    landscapeImg:
+      "/assets/images/technology/image-launch-vehicle-landscape.jpg",
+    portraitImg: "/assets/images/technology/image-launch-vehicle-portrait.jpg",
+    alt: "A rocket launching into the sky with flames and smoke billowing from its engines, supported by launch structures.",
+  },
+  {
+    id: "spaceport",
+    title: "Spaceport",
+    description: `A spaceport or cosmodrome is a site for launching (or receiving)
+      spacecraft, by analogy to the seaport for ships or airport for aircraft.
+      Based in the famous Cape Canaveral, our spaceport is ideally situated to
+      take advantage of the Earth’s rotation for launch.`,
+    landscapeImg: "/assets/images/technology/image-spaceport-landscape.jpg",
+    portraitImg: "/assets/images/technology/image-spaceport-portrait.jpg",
+    alt: "A rocket on a launch pad with a person in a blue shirt and cap standing in the foreground, set against a clear blue sky.",
+  },
+  {
+    id: "space-capsule",
+    title: "Space Capsule",
+    description: `A space capsule is an often-crewed spacecraft that uses a blunt-body
+      reentry capsule to reenter the Earth's atmosphere without wings. Our
+      capsule is where you'll spend your time during the flight. It includes a
+      space gym, cinema, and plenty of other activities to keep you
+      entertained.`,
+    landscapeImg: "/assets/images/technology/image-space-capsule-landscape.jpg",
+    portraitImg: "/assets/images/technology/image-space-capsule-portrait.jpg",
+    alt: "A spacecraft with the NASA logo and the word 'SpaceX' in space, with the Earth in the background and the hatch open, revealing the docking mechanism.",
+  },
+];
+---
+
+<Layout title="Space Tourism Website" bodyClass="technology">
+  <div class="grid-container" data-type="technology">
+    <NumberedTitle number="03" title="Space launch 101" />
+    <NumberTabs />
+
+    {
+      technologyData.map((item, index) => (
+        <>
+          <article
+            id={`tabpanel-${index + 1}`}
+            class={`technology-details ${index === 0 ? "flex" : "hidden"} flex-col gap-200 mt-100`}
+            role="tabpanel"
+            aria-labelledby={`tab-${index + 1}`}
+            tabindex="0"
+          >
+            <hgroup class="flex flex-col gap-200">
+              <h2 class="fs-600 font-serif uppercase text-neutral-100/50">
+                The Terminology…
+              </h2>
+              <p class="fs-700 text-neutral-100 uppercase font-serif">
+                {item.title}
+              </p>
+            </hgroup>
+            <p>{item.description}</p>
+          </article>
+
+          <picture
+            id={`${item.id}-image`}
+            class={index === 0 ? "pt-800 lg:py-800" : "hidden pt-800 lg:py-800"}
+            tabindex="0"
+          >
+            <source srcset={item.portraitImg} media="(min-width: 50rem)" />
+            <img src={item.landscapeImg} alt={item.alt} />
+          </picture>
+        </>
+      ))
+    }
+  </div>
+</Layout>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  .technology-details,
+  picture {
+    &:focus-visible {
+      outline: 5px double $color-neutral-300;
+      outline-offset: 5px;
+    }
+  }
+</style>
