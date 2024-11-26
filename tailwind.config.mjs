@@ -32,6 +32,7 @@ export default {
       3: "4px",
     },
     spacing: {
+      0: "0",
       25: "0.125rem",
       50: "0.25rem",
       100: "0.5rem",
